@@ -3,7 +3,7 @@
 Name | DeadLine | Ready  
 ------------ | ---------: | ------------
 1\. [AWS Cloud Overview](https://github.com/W1ckedS1ck/EpamLearning/tree/main/1.AWSCloudOverview#readme) | 04 Apr 2023
-2\. Security, Identity, & Compliance | 11 Apr 2023
+2\. [Security, Identity, & Compliance](https://github.com/W1ckedS1ck/EpamLearning/tree/main/2.Security,Identity,&Compliance) | 11 Apr 2023
 3\. Networking, DNS, & Content Delivery | 18 Apr 2023
 4\. Compute Services | 25 Apr 2023
 5\. Storage Services | 06 May 2023
