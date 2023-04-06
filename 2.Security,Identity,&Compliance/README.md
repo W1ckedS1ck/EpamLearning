@@ -61,6 +61,7 @@
   To create S3 Bucket, enter into the [S3 console](https://s3.console.aws.amazon.com/s3/get-started) . And then, click **Create bucket** button
   <img width="1196" alt="image" src="https://user-images.githubusercontent.com/61629889/230357034-57e6e340-f1dd-471b-bf39-5326b462b9b2.png">  
   Move on to the IAM - Roles - Create role - AWS service - EC2 and create policy like we did before.  
+
   ```json
   {
       "Version": "2012-10-17",
@@ -86,13 +87,15 @@
   ```
   The policy IAMBucketTestPolicy has been created. Then back to the previous tab and proceed with role *IAMBucketTestRole* creation.
   Role IAMBucketTestRole created.
-  !!CHeck youк Security Group to avoid connection issues!!  
+  !!Check youк Security Group to avoid connection issues!!  
+
   ```bash  
   [ec2-user@ip-172-31-27-15 ~]$ aws s3 ls  
   Unable to locate credentials. You can configure credentials by running "aws configure".  
   ```  
+
   Update your IAM role: Back to the Instances page and select prod-instance. Click Actions button and select Security and click Modify IAM role. 
-In IAM role, select IAMBucketTestRole and click Save button to attach IAM role to EC2 instance. 
+In IAM role, select *IAMBucketTestRole* and click Save button to attach IAM role to EC2 instance.  
 Successfully attached IAMBucketTestRole to instance i-018751259dc5b6f40
 <img width="806" alt="image" src="https://user-images.githubusercontent.com/61629889/230423606-70e9af8c-044c-4767-bcda-33d469f08cc5.png">
 
