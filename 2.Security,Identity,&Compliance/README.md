@@ -88,10 +88,10 @@
   
     The policy IAMBucketTestPolicy has been created. Then back to the previous tab and proceed with role *IAMBucketTestRole* creation.
     Role IAMBucketTestRole created.
-    !!Check youк Security Group to avoid connection issues!!  
+    !!Check your Security Group to avoid connection issues!!  
 
     ```bash  
-    [ec2-user@ip-172-31-27-15 ~]$ aws s3 ls  
+    aws s3 ls  
     Unable to locate credentials. You can configure credentials by running "aws configure".  
     ```  
 
@@ -190,6 +190,21 @@ In IAM role, select *IAMBucketTestRole* and click Save button to attach IAM role
    > **_NOTE:_** By default, all actions you choose will be **allowed**. To **deny** actions, choose Switch to deny permissions in the upper right corner of the Actions section.  
 ---
 
+
 ## Advanced level
 
 - Key Management: KMS
+
+    Go to Key Management Service (KMS) - Customer-managed keys - [Create key](https://us-east-1.console.aws.amazon.com/kms/home?region=us-east-1#/kms/keys/create).  
+    I chose Symmetric, Encrypt and decrypt, KMS. arn:aws:kms:us-east-1:610614396838:key/31019211-fbc3-470d-ac9a-b15f9e0aaa71 Now check how it works.
+Connect to our PROD instance and create a file with very-secret-content named unencr.txt
+    <img width="1588" alt="Screenshot at Apr 09 13-15-36" src="https://user-images.githubusercontent.com/61629889/230764787-312027f4-51d8-4149-9e17-26b2028efc4b.png">
+    And now let's figure out what happened.
+  1. (RED) User IAMBucketTestRole is not authorized to perform encrypting/decrypting. 
+  2. (YELLOW) IAMBucketTestRole has been added to **Key users** in the KMS and voila - the user can encrypt the file.
+  3. (GREEN) ENCR.txt has been successfully decrypted and we can see ours very-secret-content.
+    ```bash
+    aws kms encrypt --key-id 31019211-fbc3-470d-ac9a-b15f9e0aaa71 --plaintext fileb://unencr.txt --output text --query CiphertextBlob | base64 --decode > ENCR.txt
+    
+    aws kms decrypt --ciphertext-blob fileb://ENCR.txt --output text --query plaintext | base64 --decode > NEWunencr.txt
+  ```
