@@ -1,10 +1,10 @@
 # <p align=center>CloudX Associate: AWS DevOps [2023Q1 Group 2]</p>   
 ***  
 Name | DeadLine | Ready  
------------- | ---------: | ------------
-1\. [AWS Cloud Overview](https://github.com/W1ckedS1ck/EpamLearning/tree/main/1.AWSCloudOverview#readme) | 04 Apr 2023
-2\. [Security, Identity, & Compliance](https://github.com/W1ckedS1ck/EpamLearning/tree/main/2.Security,Identity,&Compliance) | 11 Apr 2023
-3\. Networking, DNS, & Content Delivery | 18 Apr 2023
+------------ | ---------: | ------------:
+1\. [AWS Cloud Overview](https://github.com/W1ckedS1ck/EpamLearning/tree/main/1.AWSCloudOverview#readme) | 04 Apr 2023 | <ul><li>- [x] </li><ul>
+2\. [Security, Identity, & Compliance](https://github.com/W1ckedS1ck/EpamLearning/tree/main/2.Security,Identity,&Compliance) | 11 Apr 2023 | <ul><li>- [x] </li><ul>
+3\. [Networking, DNS, & Content Delivery](https://github.com/W1ckedS1ck/EpamLearning/tree/main/3.Networking%2CDNS%2C%26ContentDelivery) | 18 Apr 2023
 4\. Compute Services | 25 Apr 2023
 5\. Storage Services | 06 May 2023
 6\. Provisioning Services | 15 May 2023
