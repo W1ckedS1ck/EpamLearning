@@ -24,11 +24,16 @@
   Open the EC2 - Auto Scaling - Auto Scaling Groups - [Create Auto Scaling group](https://ap-northeast-2.console.aws.amazon.com/ec2/home?region=ap-northeast-2#CreateAutoScalingGroup:) pick *Launch template* - Create a launch template. Name it and fill *Launch template contents*. For this tutorial, select Amazon Linux 2 AMI (HVM), SSD Volume Type. Scroll down to Network settings and select the security group that was created for the Application Load Balancer. Expand the Advanced details - User data  
     ```bash
     #!/bin/bash
-    yum install httpd -y 
-    systemctl start httpd 
-    systemctl stop firewalld 
-    cd /var/www/html 
-    echo "this is my test site and the instance-id is " > index.html curl http://169.254.169.254/latest/meta-data/instance-id >> index.html
+
+    # Получаем IP-адрес сервера из метаданных EC2
+    ip=$(curl ifconfig.me)
+
+    # Создаем файл index.html
+    echo "<html><body><h1>IP-адрес: $ip</h1></body></html>" > /var/www/html/index.html
+
+    # Запускаем веб-сервер Apache
+    service httpd start
+    chkconfig httpd on
     ```
     > Successfully created Template-for-EC2 (lt-0b1571b020010d234)
   - Step 3: Create the Amazon EC2 Auto Scaling group—launch template, instances, and network subnet selection  
@@ -43,7 +48,10 @@
     <img width="527" alt="image" src="https://user-images.githubusercontent.com/61629889/234079198-70c00f00-5015-4de3-8320-0c3fb5c8de2c.png">  
   Go to *Instance management* tab  
     <img width="533" alt="image" src="https://user-images.githubusercontent.com/61629889/234079310-a3701f86-0b12-4022-9d83-12f19568a667.png">
-  
+  Go back to the Auto Scaling groups console and review the Activity history
+    <img width="538" alt="image" src="https://user-images.githubusercontent.com/61629889/234379606-94be53e9-4d36-4c37-9da0-1e0f571c2151.png">
+
+
   - Step 6: Clean up resources  
     - Delete the Auto Scaling group | - Done         ✅  
     - Delete the Load Balancer | - Done              ✅  
