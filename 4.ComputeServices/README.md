@@ -43,6 +43,11 @@
   Go to *Instance management* tab  
   <img width="533" alt="image" src="https://user-images.githubusercontent.com/61629889/234079310-a3701f86-0b12-4022-9d83-12f19568a667.png">
   
+  - Step 6: Clean up resources  
+    - Delete the Auto Scaling group | - Done         ✅  
+    - Delete the Load Balancer | - Done              ✅  
+    - Delete the Target group you created | - Done   ✅   
+    - Delete your launch template | - Done           ✅  
 
 
 
